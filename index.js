@@ -6,11 +6,20 @@ const memeModalInner = document.getElementById("meme-modal-inner");
 const memeModal = document.getElementById("meme-modal");
 const modalCloseBtn = document.getElementById("meme-modal-close-btn");
 
+document.addEventListener("click", handleClick);
+
 emotionRadios.addEventListener("change", highlightCheckedOption);
 
 modalCloseBtn.addEventListener("click", closeModal);
 
 getImageBtn.addEventListener("click", renderCat);
+
+function handleClick(e) {
+  const container = document.getElementById("container");
+  if (!container.contains(e.target)) {
+    closeModal();
+  }
+}
 
 function highlightCheckedOption(e) {
   const radios = document.getElementsByClassName("radio");
